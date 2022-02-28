@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="120dp"
+    android:layout_height="102dp"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="22dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/item_image_weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_sun"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:textSize="10dp"
+            style="@style/txt_black"
+            android:id="@+id/item_txt_day"
+            android:layout_marginTop="12dp"
+            android:text="Mon,21"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_image_weather" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_txt_day">
+
+            <TextView
+                android:id="@+id/item_txt_degree_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:text="35°C"
+                android:textAlignment="center"
+                android:textColor="@color/gray"
+                android:textSize="8sp" />
+
+            <ImageView
+                android:id="@+id/item_image_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/item_txt_degree_up"
+                android:layout_alignBottom="@id/item_txt_degree_up"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="6dp"
+                android:layout_toEndOf="@id/item_txt_degree_up"
+                android:src="@drawable/ic_up" />
+
+            <TextView
+                android:id="@+id/item_txt_degree_down"
+                android:text="35°C"
+                android:layout_toEndOf="@id/item_image_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@color/gray"
+                android:layout_marginEnd="2dp"
+                android:textSize="8sp" />
+            <ImageView
+                android:id="@+id/item_image_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/item_txt_degree_down"
+                android:layout_alignBottom="@id/item_txt_degree_down"
+                android:layout_toEndOf="@id/item_txt_degree_down"
+                android:src="@drawable/ic_down" />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

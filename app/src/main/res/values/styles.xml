@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="txt_black">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/gray_dark</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="txt_gray">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">8sp</item>
+    </style>
+
+    <style name="txt_light">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/gray_light</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>
