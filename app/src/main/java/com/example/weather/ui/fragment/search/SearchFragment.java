@@ -102,6 +102,7 @@ public class SearchFragment extends Fragment implements SearchAdapter.Transfer {
 
     @Override
     public void onClick(Country country) {
+        clear();
         final String MODEL = "model";
         NavController controller = Navigation.findNavController(requireActivity(), R.id.fragment_container);
         Bundle bundle = new Bundle();

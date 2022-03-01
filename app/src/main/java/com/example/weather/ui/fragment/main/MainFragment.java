@@ -3,7 +3,6 @@ package com.example.weather.ui.fragment.main;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -14,8 +13,6 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -79,7 +76,6 @@ public class MainFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initLocation();
         initListener();
         initInterListener();
         initBtn();
@@ -234,21 +230,24 @@ public class MainFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        GetLocation();
+        getLocation();
     }
 
-    private void GetLocation() {
+
+
+    private void getLocation() {
         int TEN = 10;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (requireActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
+            if (requireActivity().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requireActivity().requestPermissions(new
+                        String[]{Manifest.permission.ACCESS_FINE_LOCATION}, ONE);
+            } else {
+
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
                         (long) THOUSAND * TEN, TEN, locationListener);
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
                         (long) THOUSAND * TEN, TEN, locationListener);
-            } else {
-                requireActivity().requestPermissions(new
-                        String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, ONE);
             }
         }
     }
@@ -265,7 +264,9 @@ public class MainFragment extends Fragment {
             permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == ONE) {
-            GetLocation();
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getLocation();
+            }
         }
     }
 
